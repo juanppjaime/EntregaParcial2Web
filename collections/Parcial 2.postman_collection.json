@@ -1,0 +1,1114 @@
+{
+	"info": {
+		"_postman_id": "19c24243-be42-48db-9235-46b363c846cb",
+		"name": "Parcial 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29710386"
+	},
+	"item": [
+		{
+			"name": "Medico",
+			"item": [
+				{
+					"name": "Añadir un médico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"medico_id\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Dr. Juan Pérez López\",\r\n  \"especialidad\": \"Cardiología\",\r\n  \"telefono\":\"3172630017\",\r\n  \"pacientes\": []\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/medicos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Añadir un médico",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/medicos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"medicos"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n  \"nombre\": \"Dr. Juan Pérez López\",\r\n  \"especialidad\": \"Cardiología\",\r\n  \"telefono\":\"3172630017\",\r\n  \"pacientes\": []\r\n}\r\n"
+						}
+					]
+				},
+				{
+					"name": "Obtener todos los médicos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/medicos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener todos los médicos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/medicos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"medicos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "[\r\n   {\r\n       \"id\": \"14f05d0e-1275-11ed-861d-0242ac120002\",\r\n       \"name\": \"Bendigo Art Gallery\",\r\n       \"description\": \"Located in Bendigo, Victoria, we are one of the oldest and largest regional galleries in Australia. Our collection is extensive, with an emphasis on 19th century European art and Australian art from the 1800s, alongside a strong collection of contemporary Australian art.\\nOver the last decade, we have cemented a reputation for presenting innovative international exhibitions alongside a dynamic and varied suite of public programs and events.\",\r\n       \"address\": \"42 View Street\",\r\n       \"city\": \"Bendigo\",\r\n       \"image\": \"https://www.bendigoregion.com.au/sites/default/files/styles/large/public/2019-05/Bendigo%20Art%20Gallery.jpg?itok=mbJ4vxuK\",\r\n       \"artworks\": [\r\n           {\r\n               \"id\": \"14f05d0e-1275-11ed-861d-0242ac120032\",\r\n               \"name\": \"Self portrait\",\r\n               \"year\": 1931,\r\n               \"description\": \"Painted in 1948, Cossington Smith's self-portrait represents her vibrant use of light-infused colour and interest in structure and form. Depicting herself in the prime of her long career, the short brushstrokes, laden with paint, build up a strong colour portrait and capture the dedication she felt towards her art in her intense focused gaze and the determined set of her lips.\",\r\n               \"type\": \"Painting\",\r\n               \"mainImage\": \"https://www.portrait.gov.au/files/b/b/2/c/i5398.jpg\"\r\n           },\r\n           {\r\n               \"id\": \"14f05d0e-1275-11ed-861d-0242ac120004\",\r\n               \"name\": \"Self portrait in the studio\",\r\n               \"year\": 1976,\r\n               \"description\": \"Similar to Brett Whiteley's other major paintings of this period, 'Self-portrait in the studio' exudes a sense of sumptuous living and the liquid presence of the harbour through what he called 'the ecstasy-like effect of Ultramarine blue'. Whiteley's tiny mirror self-portrait also reflects the influence of Eastern art in his portrayal of man as merely part of a larger landscape.\",\r\n               \"type\": \"Painting\",\r\n               \"mainImage\": \"https://www.bendigoregion.com.au/sites/default/files/2021-05/brett_whiteley_greg_self.jpg\"\r\n           },\r\n           {\r\n               \"id\": \"14f05d0e-1275-11ed-861d-0242ac124032\",\r\n               \"name\": \"Dogs\",\r\n               \"year\": 1975,\r\n               \"description\": \"Brett Whiteley felt deeply connected to animals since childhood. In fact, between 1965 and 1988 he staged four exhibitions whose predominant or exclusive subject was animals that he had observed in zoos, domestic environments and in nature.\",\r\n               \"type\": \"Painting\",\r\n               \"mainImage\": \"https://www.bendigoregion.com.au/sites/default/files/2021-05/brett_whiteley_greg_dogs.jpg\"\r\n           }\r\n       ],\r\n       \"exhibitions\": [\r\n           {\r\n               \"id\": \"14f05d0e-1275-11ed-86dd-0242ac120032\",\r\n               \"name\": \"Brett Whiteley: Drawing is Everything\",\r\n               \"description\": \"At the heart of Brett Whiteley's extraordinary career was an exceptional talent for drawing.\\nDrawing underpinned everything he did – from painting to sculpture to prints – and was fundamental to his imaginative and creative process. Whiteley's drawing is richly expressive and his bold mastery of line is instantly recognisable. \\nThis major exhibition from the Art Gallery of New South Wales is the first to explore the central place of drawing in Whiteley's practice, featuring rarely seen early works from Sydney and Europe through to the great abstracts that brought Whiteley international fame in the 1960s. Also featured are lyrical landscapes, portraits, interiors and nudes and the iconic imagery of Sydney's Lavender Bay, offering a journey through the career that established him as one of the most prominent Australian artists of the 20th century.\\nDon't miss this rare opportunity to discover the very foundations of Whiteley's creativity and process, as showcased in a collection of drawings, paintings, and sculptures suffused with the unmistakable personality of the great Australian master.\"\r\n           },\r\n           {\r\n               \"id\": \"14ffg05d0e-1275-11ed-861d-0242ac120032\",\r\n               \"name\": \"Modern Australia\",\r\n               \"description\": \"This selection of works from the Gallery's collection traces the key movements in Modern Australian art and design, and the search for a distinctive Australian visual arts style throughout the mid twentieth century.\"\r\n           }\r\n       ]\r\n   },\r\n   {\r\n       \"id\": \"14f05fgfd0e-1275-11ed-861d-0242ac120032\",\r\n       \"name\": \"Museum of Modern Art\",\r\n       \"description\": \"At The Museum of Modern Art and MoMA PS1, we celebrate creativity, openness, tolerance, and generosity. We aim to be inclusive places— both onsite and online—where diverse cultural, artistic, social, and political positions are welcome. We're committed to sharing the most thought-provoking modern and contemporary art, and hope you will join us in exploring the art, ideas, and issues of our time.\",\r\n       \"address\": \"11 West 53 Street, Manhattan\",\r\n       \"city\": \"New York City\",\r\n       \"image\": \"https://media.cntraveler.com/photos/5dae0325b45cd80008161cf3/master/pass/MOMA-2019_IVRPHOTO-4373_ArtistChoice_HB_007-2-2000x1125.jpg\",\r\n       \"artworks\": [\r\n           {\r\n               \"id\": \"14fgff05d0e-1275-11ed-861d-0242ac120032\",\r\n               \"name\": \"Connaissance du monde\",\r\n               \"year\": 1996,\r\n               \"description\": \"In the late 1970s, after decades of making handwritten manuscripts, Bouabré began to draw on found cardboard, combining image and text. From the 1980s onwards, as the scope of his interests grew, he embarked on an all-encompassing project, drawing from observation almost daily. He titled the open-ended series of drawings Connaissance du Monde, and worked on it until his death in 2014, systematically compiling and classifying forms, ideas, and a wide range of phenomena, including domestic objects, cloud formations, and tribal scarifications, as well as the political climate and world events.\",\r\n               \"type\": \"Painting\",\r\n               \"mainImage\": \"https://universes.art/fileadmin/_processed_/2/b/csm_14_ivory_coast_16b2369926.jpg\"\r\n           }\r\n       ],\r\n       \"exhibitions\": [\r\n           {\r\n               \"id\": \"14f05d0e-127fg5-11ed-861d-0242ac120032\",\r\n               \"name\": \"Frédéric Bruly Bouabré: World Unbound\",\r\n               \"description\": \"At the heart of Brett Whiteley's extraordinary career was an exceptional talent for drawing.\\nDrawing underpinned everything he did – from painting to sculpture to prints – and was fundamental to his imaginative and creative process. Whiteley's drawing is richly expressive and his bold mastery of line is instantly recognisable. \\nThis major exhibition from the Art Gallery of New South Wales is the first to explore the central place of drawing in Whiteley's practice, featuring rarely seen early works from Sydney and Europe through to the great abstracts that brought Whiteley international fame in the 1960s. Also featured are lyrical landscapes, portraits, interiors and nudes and the iconic imagery of Sydney's Lavender Bay, offering a journey through the career that established him as one of the most prominent Australian artists of the 20th century.\\nDon't miss this rare opportunity to discover the very foundations of Whiteley's creativity and process, as showcased in a collection of drawings, paintings, and sculptures suffused with the unmistakable personality of the great Australian master.\"\r\n           }\r\n       ]\r\n   }\r\n]"
+						}
+					]
+				},
+				{
+					"name": "Obtener un médico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/{{id_medico}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"{{id_medico}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener un médico",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/medicos/{{id_medico}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"medicos",
+										"{{id_medico}}"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n   \"id\": \"1e061964-1276-11ed-861d-0242ac120002\",\r\n   \"name\": \"Museum of Modern Art\",\r\n   \"description\": \"At The Museum of Modern Art and MoMA PS1, we celebrate creativity, openness, tolerance, and generosity. We aim to be inclusive places— both onsite and online—where diverse cultural, artistic, social, and political positions are welcome. We're committed to sharing the most thought-provoking modern and contemporary art, and hope you will join us in exploring the art, ideas, and issues of our time.\",\r\n   \"address\": \"11 West 53 Street, Manhattan\",\r\n   \"city\": \"New York City\",\r\n   \"image\": \"https://media.cntraveler.com/photos/5dae0325b45cd80008161cf3/master/pass/MOMA-2019_IVRPHOTO-4373_ArtistChoice_HB_007-2-2000x1125.jpg\",\r\n   \"artworks\": [\r\n       {\r\n           \"id\": \"2e061964-1276-11ed-861d-0242ac120002\",\r\n           \"name\": \"Connaissance du monde\",\r\n           \"year\": 1996,\r\n           \"description\": \"In the late 1970s, after decades of making handwritten manuscripts, Bouabré began to draw on found cardboard, combining image and text. From the 1980s onwards, as the scope of his interests grew, he embarked on an all-encompassing project, drawing from observation almost daily. He titled the open-ended series of drawings Connaissance du Monde, and worked on it until his death in 2014, systematically compiling and classifying forms, ideas, and a wide range of phenomena, including domestic objects, cloud formations, and tribal scarifications, as well as the political climate and world events.\",\r\n           \"type\": \"Painting\",\r\n           \"mainImage\": \"https://universes.art/fileadmin/_processed_/2/b/csm_14_ivory_coast_16b2369926.jpg\"\r\n       }\r\n   ],\r\n   \"exhibitions\": [\r\n       {\r\n           \"id\": \"1c061964-1276-11ed-861d-0242ac120002\",\r\n           \"name\": \"Frédéric Bruly Bouabré: World Unbound\",\r\n           \"description\": \"The work of the Ivorian artist Frédéric Bruly Bouabré had a single objective: to record and transmit information about the known universe. Devoting his life to a quest for knowledge, Bouabré captured and codified subjects from a range of sources, including cultural traditions, folklore, religious and spiritual belief systems, philosophy, and popular culture.\"\r\n       }\r\n   ]\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener un médico inválido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener un médico inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/medicos/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"medicos",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"El médico con el id dado no fue encontrado\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar un médico",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/{{id_medico}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"{{id_medico}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar un médico",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/medicos/{{id_medico}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"medicos",
+										"{{id_medico}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Eliminar un médico inválido",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar un médico inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/medicos/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"medicos",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"El médico con el id dado no fue encontrado\"\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Paciente",
+			"item": [
+				{
+					"name": "Añadir un paciente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"medico_id\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Gonzalo Hurtado\",\r\n  \"genero\": \"Masculino\",\r\n  \"medicos\": [],\r\n  \"diagnosticos\": []\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pacientes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Añadir un paciente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/pacientes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pacientes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n  \"nombre\": \"Gonzalo Hurtado\",\r\n  \"genero\": \"Masculino\",\r\n  \"medicos\": [],\r\n  \"diagnosticos\": []\r\n}\r\n"
+						}
+					]
+				},
+				{
+					"name": "Obtener todos los pacientes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pacientes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener todos los pacientes",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pacientes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pacientes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"nombre\": \"Gonzalo Hurtado\",\r\n    \"genero\": \"Masculino\",\r\n    \"medicos\": [],\r\n    \"diagnosticos\": [],\r\n    \"id\": \"d4195f6d-be59-4aa7-ae52-97ddef529239\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener un paciente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/{{id_paciente}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"{{id_paciente}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener un médico",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/pacientes/{{id_paciente}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pacientes",
+										"{{id_paciente}}"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"nombre\": \"Gonzalo Hurtado\",\r\n    \"genero\": \"Masculino\",\r\n    \"medicos\": [],\r\n    \"diagnosticos\": [],\r\n    \"id\": \"d4195f6d-be59-4aa7-ae52-97ddef529239\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener un paciente inválido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener un paciente inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pacientes/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pacientes",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"El paciente con el id dado no fue encontrado\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar un paciente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/{{id_paciente}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"{{id_paciente}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar un paciente",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pacientes/{{id_paciente}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pacientes",
+										"{{id_paciente}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Eliminar un paciente inválido",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar un médico inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/pacientes/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"pacientes",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"El paciente con el id dado no fue encontrado\"\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Diagnostico",
+			"item": [
+				{
+					"name": "Añadir un diagnóstico",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"medico_id\", data.id);\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Resultados\",\r\n  \"descripcion\": \"Todo ok\",\r\n  \"pacientes\": []\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/diagnosticos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"diagnosticos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Añadir un diagnóstico",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/diagnosticos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"diagnosticos"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"nombre\": \"Resultados\",\r\n    \"descripcion\": \"Todo ok\",\r\n    \"pacientes\": [],\r\n    \"id\": \"ce0842a5-a5dc-4fe9-b0ce-022fc3852de9\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener todos los diagnósticos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/diagnosticos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"diagnosticos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener todos los médicos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/diagnosticos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"diagnosticos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"nombre\": \"Resultados\",\r\n    \"descripcion\": \"Todo ok\",\r\n    \"pacientes\": [],\r\n    \"id\": \"ce0842a5-a5dc-4fe9-b0ce-022fc3852de9\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener un diagnóstico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/diagnosticos/{{id_diagnostico}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"diagnosticos",
+								"{{id_diagnostico}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener un diagnóstico",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/diagnosticos/{{id_diagnostico}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"diagnosticos",
+										"{{id_diagnostico}}"
+									]
+								}
+							},
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n    \"nombre\": \"Resultados\",\r\n    \"descripcion\": \"Todo ok\",\r\n    \"pacientes\": [],\r\n    \"id\": \"ce0842a5-a5dc-4fe9-b0ce-022fc3852de9\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener un diagnóstico inválido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/diagnosticos/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"diagnosticos",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener un diagnóstico inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/diagnosticos/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"diagnosticos",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"El diagnóstico con el id dado no fue encontrado\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar un diagnóstico",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/diagnosticos/{{id_diagnostico}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"diagnosticos",
+								"{{id_diagnostico}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar un médico",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/diagnosticos/{{id_diagnostico}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"diagnosticos",
+										"{{id_diagnostico}}"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Eliminar un diagnóstico inválido",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/diagnosticos/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"diagnosticos",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar un diagnóstico inválido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/medicos/00000000-0000-0000-0000-000000000000",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"medicos",
+										"00000000-0000-0000-0000-000000000000"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"El diagnóstico con el id dado no fue encontrado\"\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Paciente-Medico",
+			"item": [
+				{
+					"name": "Añadir un médico a un paciente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pacientes-medicos/{{id_paciente}}/medicos/{{id_medico}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes-medicos",
+								"{{id_paciente}}",
+								"medicos",
+								"{{id_medico}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Añadir un médico a un paciente",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/d4195f6d-be59-4aa7-ae52-97ddef529239/medicos/8ba72860-1191-4fe2-98a0-7cb89b5befd5",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"d4195f6d-be59-4aa7-ae52-97ddef529239",
+										"medicos",
+										"8ba72860-1191-4fe2-98a0-7cb89b5befd5"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\"id\":\"d4195f6d-be59-4aa7-ae52-97ddef529239\",\"nombre\":\"Gonzalo Hurtado\",\"genero\":\"Masculino\",\"medicos\":[{\"id\":\"8ba72860-1191-4fe2-98a0-7cb89b5befd5\",\"nombre\":\"Dr. Juan Pérez López\",\"especialidad\":\"Cardiología\",\"telefono\":\"3172630017\"},{\"id\":\"8ba72860-1191-4fe2-98a0-7cb89b5befd5\",\"nombre\":\"Dr. Juan Pérez López\",\"especialidad\":\"Cardiología\",\"telefono\":\"3172630017\"}]}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

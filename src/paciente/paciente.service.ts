@@ -31,7 +31,9 @@ export class PacienteService
       }
     
       async delete(id: string){
-        const paciente = await this.pacienteRepository.findOne({where:{id}});
+        const paciente = await this.pacienteRepository.findOne({where:{id}, relations:['diagnosticos']});
+        if(!paciente)
+          throw new NotFoundException('Paciente no encontrado para el id asociado');
         if (paciente.diagnosticos.length > 0) {
           throw new BadRequestException('No se puede eliminar un paciente con diagnósticos asociados.');
         }
