@@ -40,13 +40,13 @@ describe('MedicoService', () => {
     expect(service).toBeDefined();
   });
 
-  it('findAll should return all medicos', async () => {
+  it('Retorna todos los médicos', async () => {
     const medicos: MedicoEntity[] = await service.findAll();
     expect(medicos).not.toBeNull();
     expect(medicos).toHaveLength(medicosList.length);
   });
 
-  it('findOne should return a medico by id', async () => {
+  it('Retorna médico por id', async () => {
     const storedMedico: MedicoEntity = medicosList[0];
     const medico: MedicoEntity = await service.findOne(storedMedico.id);
     expect(medico).not.toBeNull();
@@ -55,14 +55,14 @@ describe('MedicoService', () => {
     expect(medico.telefono).toEqual(storedMedico.telefono);
   });
 
-  it('findOne should throw an exception for an invalid medico', async () => {
+  it('fExcepción para médico inválido por id', async () => {
     await expect(() => service.findOne('0')).rejects.toHaveProperty(
       'message',
       'El médico al id asociado no existe',
     );
   });
 
-  it('create should return a new medico', async () => {
+  it('Crea un nuevo médico', async () => {
     const medico: MedicoEntity = {
       id: '',
       nombre: faker.name.fullName(),
@@ -81,7 +81,7 @@ describe('MedicoService', () => {
     expect(storedMedico.telefono).toEqual(newMedico.telefono);
   });
 
-  it('delete should remove a medico', async () => {
+  it('Remover un médico', async () => {
     const medico: MedicoEntity = medicosList[0];
     await service.delete(medico.id);
 
@@ -89,7 +89,7 @@ describe('MedicoService', () => {
     expect(deletedMedico).toBeNull();
   });
 
-  it('delete should throw an exception for an invalid medico', async () => {
+  it('Excepción para borrar médico inválido', async () => {
     await expect(() => service.delete('0')).rejects.toHaveProperty(
       'message',
       'El médico al id asociado no existe',

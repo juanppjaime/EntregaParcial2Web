@@ -40,13 +40,13 @@ describe('DiagnosticoService', () => {
     expect(service).toBeDefined();
   });
 
-  it('findAll should return all diagnosticos', async () => {
+  it('Retornar todos los diagnósticos', async () => {
     const diagnosticos: DiagnosticoEntity[] = await service.findAll();
     expect(diagnosticos).not.toBeNull();
     expect(diagnosticos).toHaveLength(diagnosticosList.length);
   });
 
-  it('findOne should return a diagnostico by id', async () => {
+  it('Retornar diagnóstico por id', async () => {
     const storedDiagnostico: DiagnosticoEntity = diagnosticosList[0];
     const diagnostico: DiagnosticoEntity = await service.findOne(storedDiagnostico.id);
     expect(diagnostico).not.toBeNull();
@@ -54,14 +54,14 @@ describe('DiagnosticoService', () => {
     expect(diagnostico.descripcion).toEqual(storedDiagnostico.descripcion);
   });
 
-  it('findOne should throw an exception for an invalid diagnostico', async () => {
+  it('Error diagnóstico por id inválido', async () => {
     await expect(() => service.findOne('0')).rejects.toHaveProperty(
       'message',
       'El diagnóstico asociado a ese id no existe',
     );
   });
 
-  it('create should return a new diagnostico', async () => {
+  it('Crear un diagnóstico', async () => {
     const diagnostico: DiagnosticoEntity = {
       id: '',
       nombre: faker.word.sample(),
@@ -78,7 +78,7 @@ describe('DiagnosticoService', () => {
     expect(storedDiagnostico.descripcion).toEqual(newDiagnostico.descripcion);
   });
 
-  it('create should throw an exception if descripcion is too long', async () => {
+  it('Descripción demasiado larga', async () => {
     const diagnostico: DiagnosticoEntity = {
       id: '',
       nombre: faker.word.sample(),
@@ -89,7 +89,7 @@ describe('DiagnosticoService', () => {
     await expect(() => service.create(diagnostico)).rejects.toThrow(BadRequestException);
   });
 
-  it('delete should remove a diagnostico', async () => {
+  it('Remover un diagnóstico', async () => {
     const diagnostico: DiagnosticoEntity = diagnosticosList[0];
     await service.delete(diagnostico.id);
 
@@ -97,7 +97,7 @@ describe('DiagnosticoService', () => {
     expect(deletedDiagnostico).toBeNull();
   });
 
-  it('delete should throw an exception for an invalid diagnostico', async () => {
+  it('Excepción remover diagnóstico inválido', async () => {
     await expect(() => service.delete('0')).rejects.toHaveProperty(
       'message',
       'El diagnóstico asociado a ese id no existe',
