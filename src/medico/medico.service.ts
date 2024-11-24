@@ -31,8 +31,10 @@ export class MedicoService
       }
     
       async delete(id: string){
-        const medico: MedicoEntity = await this.medicoRepository.findOne({where:{id}});
-        if (medico.pacientes.length > 0)
+        const medico: MedicoEntity = await this.medicoRepository.findOne({where:{id}, relations: ['pacientes']});
+        if(!medico)
+            throw new NotFoundException('El médico al id asociado no existe');
+        else if (medico.pacientes.length > 0)
           throw new BadRequestException('No se puede eliminar un médico con pacientes asociados');
         await this.medicoRepository.remove(medico);
       }

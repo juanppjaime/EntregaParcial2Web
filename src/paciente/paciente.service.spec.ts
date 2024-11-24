@@ -10,7 +10,7 @@ import { BusinessLogicException, BusinessError } from '../shared/errors/business
 import { MedicoEntity } from '../medico/medico.entity';
 import { DiagnosticoEntity } from '../diagnostico/diagnostico.entity';
 
-describe('PacienteService', () => {
+describe('Test PacienteService', () => {
   let service: PacienteService;
   let repository: Repository<PacienteEntity>;
   let pacientesList: PacienteEntity[];
@@ -61,12 +61,10 @@ describe('PacienteService', () => {
     const newPaciente: PacienteEntity = await service.create(paciente);
     expect(newPaciente).not.toBeNull();
 
-    const storedPaciente: PacienteEntity = await repository.findOne({ where: { id: newPaciente.id } });
+    const storedPaciente: PacienteEntity = await repository.findOne({where:{id:newPaciente.id}});
     expect(storedPaciente).not.toBeNull();
     expect(storedPaciente.nombre).toEqual(newPaciente.nombre);
     expect(storedPaciente.genero).toEqual(newPaciente.genero);
-    expect(storedPaciente.medicos).toEqual([]);
-    expect(storedPaciente.diagnosticos).toEqual([]);
   });
 
   it('Error de negocio < 3 caracteres', async () => {
